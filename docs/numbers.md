@@ -5,11 +5,12 @@
 
 Fable numbers are very nearly compatible with .NET semantics, but translating into Javascript types has consequences:
 
-* (non-standard) All floating point numbers are implemented as 64 bit (`double`). This makes `float` numbers more accurate than expected.
+* (non-standard) All floating point numbers are implemented as 64 bit (`double` in C#, `float` in F#). This makes `float32` (`float` in C#) numbers more accurate than expected.
 * (non-standard) Arithmetic integers of 32 bits or less are implemented with different truncation from that expected, as whole numbers embedded within `double`.
 * (OK) Conversions between types are correctly truncated.
 * (OK) Bitwise operations are all correct, and when made on 32 bit integers are truncated to 32 bits.
 * (OK) Longs have a custom implementation which is identical in semantics to .NET and truncates in 64 bits: although it is quite slow.
+* (OK) Decimals use an exact representation adapted from big.js.
 
 32 bit integers thus differ from .NET in two ways:
 
